@@ -11,6 +11,8 @@ RUN locale-gen en_US.UTF-8
 
 ENV LC_ALL en_US.UTF-8
 
+VOLUME /root/.gradle
+
 EXPOSE 5005
 
 CMD ["/usr/sbin/sshd", "-D"]
