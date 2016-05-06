@@ -17,7 +17,7 @@ RUN alternatives --install /usr/bin/jar jar /usr/java/latest/bin/jar 1
 RUN alternatives --install /usr/bin/javaws javaws /usr/java/latest/bin/javaws 1
 RUN alternatives --install /usr/bin/javac javac /usr/java/latest/bin/javac 1
 
-#ENV JAVA_HOME /usr/java/latest
+ENV JAVA_HOME /usr/java/jdk1.8.0_92
 
 ADD id_rsa /root/.ssh/
 ADD id_rsa.pub /root/.ssh/
