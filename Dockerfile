@@ -5,8 +5,6 @@ RUN dnf -y update && dnf -y install iputils net-tools wget openssh-server superv
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/run/supervisord
 
-ADD supervisord.conf /etc/supervisord.conf
-
 ENV JAVA_VERSION 8u92
 ENV BUILD_VERSION b14
 
