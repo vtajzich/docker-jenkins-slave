@@ -1,6 +1,6 @@
 FROM fedora:23
 
-RUN dnf -y update && dnf -y install wget openssh-server git && mkdir ~/.ssh && chmod 700 ~/.ssh
+RUN dnf -y update && dnf -y install iputils-ping net-tools wget openssh-server git && mkdir ~/.ssh && chmod 400 ~/.ssh && dnf clean all
 
 ENV JAVA_VERSION 8u92
 ENV BUILD_VERSION b14
@@ -19,12 +19,12 @@ ENV JAVA_HOME /usr/java/latest
 ADD id_rsa /root/.ssh/
 ADD id_rsa.pub /root/.ssh/
 
-RUN cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys && chmod -R 600 /root/.ssh && mkdir /var/run/sshd && chmod 0755 /var/run/sshd
+RUN cat /root/.ssh/id_rsa.pub > /root/.ssh/authorized_keys && chmod -R 400 /root/.ssh && mkdir /var/run/sshd && chmod 0755 /var/run/sshd
 
 ENV LC_ALL en_US.UTF-8
 
 VOLUME /root/.gradle
 
-EXPOSE 5005
+EXPOSE 5005 22
 
 CMD ["/usr/sbin/sshd", "-D"]
